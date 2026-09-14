@@ -45,6 +45,89 @@
             padding: 30px;
             height: 2000px;
         }
+
+        .card-section {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #fff; /* фон страницы */
+        }
+
+        .card {
+            width: 100%;
+            max-width: 760px; /* ширина карточки */
+            box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #000; /* чтобы края панели смотрелись аккуратно */
+        }
+
+        /* Верхняя картинка */
+        .card-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Тёмная панель с текстом */
+        .card-panel {
+            background: #0f0f0f; /* тёмный фон */
+            color: #eaeaea;
+            padding: 48px 36px;
+            text-align: center;
+        }
+
+        /* Заголовок */
+        .card-title {
+            font-family: "Arial", sans-serif;
+            font-size: 34px;
+            letter-spacing: 4px;
+            margin: 10px 0 18px;
+            color: #fff;
+        }
+        
+        /* Текст описания */
+        .card-text {
+            max-width: 620px;
+            margin: 0 auto 26px;
+            line-height: 1.55;
+            color: #cfcfcf;
+            font-size: 15px;
+        }
+        
+        /* Кнопка */
+        .card-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #d33b3b; /* красная кнопка */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 28px;
+            font-weight: 600;
+            transition: transform .12s ease, box-shadow .12s ease;
+            box-shadow: 0 6px 18px rgba(211,59,59,0.25);
+        }
+        .card-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+        }
+        
+        /* Адаптив */
+        @media (max-width: 520px) {
+          .card-panel {
+            padding: 28px 18px;
+          }
+          .card-title {
+            font-size: 24px;
+          }
+          .card-text {
+            font-size: 14px;
+          }
+          .card-logo {
+            width: 110px;
+          }
+        }
     </style>
 </head>
 <body>
@@ -65,6 +148,22 @@
         В первую очередь мы прислушиваемся к отзывам от наших пользователей,
         чтобы улучшить качество разработки.</p>
     </div>
+
+    <section class="card-section">
+          <div class="card">
+            <div class="card-image">
+              <img src="the_hunt.png" alt="Моя картинка">
+            </div>
+
+            <div class="card-panel">
+              <h2 class="card-title">The Hunt</h2>
+              <p class="card-text">
+        Наш первый режим Minecraft. Суть режима охотится за животными убивать боссов и прокачивать оружие. Действия режима происходят на земле "Бета".
+              </p>
+              <a class="card-btn" href="https://example.com" target="_blank" rel="noopener">Посетить сайт</a>
+            </div>
+          </div>
+        </section>
 
 </body>
 </html>
