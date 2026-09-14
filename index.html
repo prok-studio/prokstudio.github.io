@@ -46,87 +46,100 @@
             height: 2000px;
         }
 
+        /* Удалите/замените прежнюю .content высоту — пусть она не задаёт фикс. height */
+        .content {
+          max-width: 800px;
+          font-size: 18px;
+          line-height: 1.6;
+          margin: 36px auto; /* отступ сверху/снизу */
+          text-align: center;
+          padding: 0 20px;
+          color: #fff;
+        }
+        
+        /* Карточка */
         .card-section {
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-            background: #fff; /* фон страницы */
+          display: flex;
+          justify-content: center;
+          padding: 40px 20px 80px; /* увеличил нижний отступ */
+          background: transparent; /* чтобы соответствовало тёмному фону страницы */
         }
-
+        
         .card {
-            width: 100%;
-            max-width: 760px; /* ширина карточки */
-            box-shadow: 0 6px 30px rgba(0,0,0,0.25);
-            border-radius: 6px;
-            overflow: hidden;
-            background: #000; /* чтобы края панели смотрелись аккуратно */
+          width: 100%;
+          max-width: 760px;
+          box-shadow: 0 8px 36px rgba(0,0,0,0.6);
+          border-radius: 8px;
+          overflow: hidden;
+          background: #000;
         }
-
-        /* Верхняя картинка */
+        
+        /* фиксированная высота для верхней иллюстрации,
+           чтобы картинка обрезалась аккуратно (object-fit:cover) */
+        .card-image {
+          height: 420px; /* подгоните под желаемый вид */
+          overflow: hidden;
+          background: #111; /* если изображение не загрузилось */
+        }
         .card-image img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 20%; /* сдвинуть изображение чуть выше при необходимости */
+          display: block;
         }
-
-        /* Тёмная панель с текстом */
+        
+        /* Тёмная панель с описанием */
         .card-panel {
-            background: #0f0f0f; /* тёмный фон */
-            color: #eaeaea;
-            padding: 48px 36px;
-            text-align: center;
+          background: linear-gradient(180deg,#0b0b0b,#0f0f0f);
+          color: #eaeaea;
+          padding: 44px 36px;
+          text-align: center;
         }
-
-        /* Заголовок */
+        
+        /* опциональный логотип над заголовком */
+        .card-logo {
+          width: 140px;
+          display: block;
+          margin: 0 auto 12px;
+        }
+        
+        /* заголовок и текст */
         .card-title {
-            font-family: "Arial", sans-serif;
-            font-size: 34px;
-            letter-spacing: 4px;
-            margin: 10px 0 18px;
-            color: #fff;
+          font-family: "Arial", sans-serif;
+          font-size: 34px;
+          letter-spacing: 3px;
+          margin: 6px 0 14px;
+          color: #fff;
         }
-        
-        /* Текст описания */
         .card-text {
-            max-width: 620px;
-            margin: 0 auto 26px;
-            line-height: 1.55;
-            color: #cfcfcf;
-            font-size: 15px;
+          max-width: 620px;
+          margin: 0 auto 26px;
+          line-height: 1.55;
+          color: #cfcfcf;
+          font-size: 15px;
         }
         
-        /* Кнопка */
+        /* кнопка */
         .card-btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: #d33b3b; /* красная кнопка */
-            color: #fff;
-            text-decoration: none;
-            border-radius: 28px;
-            font-weight: 600;
-            transition: transform .12s ease, box-shadow .12s ease;
-            box-shadow: 0 6px 18px rgba(211,59,59,0.25);
+          display: inline-block;
+          padding: 12px 30px;
+          background: #d33b3b;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 28px;
+          font-weight: 600;
+          box-shadow: 0 8px 22px rgba(211,59,59,0.18);
+          transition: transform .12s ease, box-shadow .12s ease;
         }
-        .card-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 22px rgba(0,0,0,0.28);
-        }
+        .card-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
         
-        /* Адаптив */
+        /* адаптив */
         @media (max-width: 520px) {
-          .card-panel {
-            padding: 28px 18px;
-          }
-          .card-title {
-            font-size: 24px;
-          }
-          .card-text {
-            font-size: 14px;
-          }
-          .card-logo {
-            width: 110px;
-          }
+          .card-image { height: 240px; }
+          .card-panel { padding: 26px 16px; }
+          .card-title { font-size: 22px; }
+          .card-text { font-size: 14px; }
         }
     </style>
 </head>
@@ -150,20 +163,21 @@
     </div>
 
     <section class="card-section">
-          <div class="card">
-            <div class="card-image">
-              <img src="the_hunt.png" alt="Моя картинка">
-            </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="the_hunt.png" alt="The Hunt">
+        </div>
 
-            <div class="card-panel">
-              <h2 class="card-title">The Hunt</h2>
-              <p class="card-text">
-        Наш первый режим Minecraft. Суть режима охотится за животными убивать боссов и прокачивать оружие. Действия режима происходят на земле "Бета".
-              </p>
-              <a class="card-btn" href="https://example.com" target="_blank" rel="noopener">Посетить сайт</a>
-            </div>
-          </div>
-        </section>
-
+        <div class="card-panel">
+          <!-- опционально: логотип -->
+          <!-- <img class="card-logo" src="PROK_2.png" alt="PROK"> -->
+          <h2 class="card-title">The Hunt</h2>
+          <p class="card-text">
+            Наш первый режим Minecraft. Суть режима — охота за животными, бои с боссами и прокачка оружия. Действия происходят на земле «Бета».
+          </p>
+          <a class="card-btn" href="https://example.com" target="_blank" rel="noopener">Посетить сайт</a>
+        </div>
+      </div>
+    </section>
 </body>
 </html>
